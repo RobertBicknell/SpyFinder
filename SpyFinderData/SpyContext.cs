@@ -6,29 +6,8 @@ namespace SpyFinderData
 {
     public class SpyDBContext : DbContext, ISpyDBContext
     {
-        //string ConnectionString; // = "Host=localhost;Database=Spies;Username=postgres;Password=password"; //TODO: load from config
-
-        //public SpyDBContext(string testDbConnectionString) 
-        //{
-          //  ConnectionString = testDbConnectionString;
-
-//        }
-
-        //DbContextOptionsBuilder optionsBuilder => optionsBuilder.UseNpgsql(ConnectionString);
-
-  //      public void ConfigureConnecrtion(DbContextOptionsBuilder optionsBuilder)
-    //     => optionsBuilder.UseNpgsql(ConnectionString); 
-
-
         public SpyDBContext(DbContextOptions<SpyDBContext> options) : base(options) { }
-
-
-
-        //{
-        //   ConnectionString = connectionString;
-        // }
         public DbSet<Spy> spies { get; set; }
-
         public virtual DbSet<Spy> GetSpies() {
             return spies;
         }

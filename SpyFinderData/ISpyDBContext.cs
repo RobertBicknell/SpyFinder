@@ -9,7 +9,7 @@ namespace SpyFinderData
         DbSet<Spy> spies { get; set; }
         DbSet<Spy> GetSpies();
         List<Spy> GetSpiesList();
-        int SaveChanges(); //TODO remove?
+        //int SaveChanges(); 
         void AddSpy(Spy s);
         void DeleteSpy(string spyName);
     }

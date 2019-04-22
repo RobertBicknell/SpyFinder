@@ -1,24 +1,24 @@
-SpyFinder
+#SpyFinder
 
-Author:		
+##Author:		
 	Robert Bicknell
 
-Date:		
+##Date:		
 	April 20th 2019
 
-Description:
+##Description:
 	SpyFinder is a minimal web application to manage a list of spy names and codes, and to check messages for the presence of a spy's code.  
 	SpyFinder stores spy names and codes in a PostgresSQL database as defined in the configuration setting  
 		PROD: "Host=localhost;Database=Spies;Username=postgres;Password=password"
 		TEST: "Host=localhost;Database=Spies;Username=postgres;Password=password"
 
-HTTP GET
+##HTTP GET
 	Purpose: Returns list of Spies and their codes.
 	Example request URL: GET http://localhost/api/spies
 	Example request payload : none.
 	Example response payload : [{"name":"Ethan Hunt","code":[3,1,4]},{"name":"James Bond","code":[0,0,7]}]
 
-HTTP PUT
+##HTTP PUT
 	Purpose: Saves a new Spy to the database.
 	Example request URL: PUT http://localhost/api/spies
 	Example request payload : 
@@ -26,15 +26,15 @@ HTTP PUT
 			"name" : "James Bond",
 			"code" : [0,0,7]
 		}
-	Example response payload : ***ADD***
+	Example response payload : "Spy successfully added."
 
-HTTP DELETE
+##HTTP DELETE
 	Purpose: Deletes a Spy from the database
 	Example request URL: DELETE http://localhost/api/spies/<spy name>
 	Example request payload : none.
-	Example response payload : ***ADD***
+	Example response payload : "Spy successfully deleted."
 
-HTTP POST
+##HTTP POST
 	Purpose: Checks a message for a spy's code and return whether the code is present.
 	Example request URL: POST http://localhost/api/spies/
 	Example request payload : 
@@ -42,19 +42,16 @@ HTTP POST
 			"Message" : [1,0,1,0,7,1],
 			"Spy" : "James Bond"
 		}	
-	Example response payload : ***ADD***
+	Example response payload : true/false
 
-Preparation 
+###Preparation 
 	* Install Postgres
 	* Create two copies of teh SPies datbase, for PROD and TEST using the SQL script contained in the SpyFinder Data project: 
 		CreateDatabase.Spies.Postgres.sql
 	* Modify the Configuration settings for the PostgresSQL PROD and TEST connections strings as required.
 		Example: "Host=localhost;Database=Spies;Username=postgres;Password=password"
 
-Docker:
-	***ADD
-
-Developer Testing notes for QA:
+###Developer Testing notes for QA:
 	* Testing was performed using Postman
 	** Configure the correct HTTP Verb, URL, including any custom port
 	** Add a Content-type header with MIME-Type 'application/json'
@@ -70,12 +67,12 @@ Developer Testing notes for QA:
 		* logging 
 		* custom exception handling
 
-Technology:
+###Technology:
 	.net Core 2.2.0 
 	Npgsql Npgsql.EntityFrameworkCore.PostgreSQL 2.2.0
 	PostgresSQL 11
 	
-Notes 
+###Notes 
 	The method of checking a message for a code compares elements of integer arrays.
 	Examples:
 

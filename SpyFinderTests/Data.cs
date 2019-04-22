@@ -13,7 +13,7 @@ namespace SpyFinderTests
         string ConnectionString = "Host=localhost;Database=Spies;Username=postgres;Password=password"; //TODO: Lookup from config
         public Data() {
             var optionsBuilder = new DbContextOptionsBuilder<SpyDBContext>();
-            optionsBuilder.UseNpgsql(ConnectionString); //fetch from Test project app.settings.. config....
+            optionsBuilder.UseNpgsql(ConnectionString); 
             context = new SpyDBContext(optionsBuilder.Options);
         }
 

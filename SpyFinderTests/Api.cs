@@ -1,13 +1,9 @@
-using System;
 using Xunit;
 using SpyFinder;
 using System.Collections.Generic;
-//
 using System.Linq;
-//
 using NSubstitute;
 using SpyFinderData;
-using Microsoft.EntityFrameworkCore;
 
 namespace SpyFinderTests
 {
@@ -47,16 +43,11 @@ namespace SpyFinderTests
             };
 
             var context = Substitute.For<ISpyDBContext>();
-            var dummy = 0;
-            context.When(x => x.AddSpy(newSpy)).Do( x => dummy++); // TODO: hack =- fix
+            var dummy = 0; // TODO: hack =- fix
+            context.When(x => x.AddSpy(newSpy)).Do( x => dummy++); 
             var c = new SpyFinder.Controllers.SpiesController(context);
             var result = c.Put(newSpy).Value;
-            Assert.Equal("Spy successfully added", result); //TODO remove hardcoded strings...
-        }
-
-        [Fact]
-        public void TryPutSpy()
-        {
+            Assert.Equal("Spy successfully added", result); 
         }
 
         [Fact]
@@ -64,16 +55,11 @@ namespace SpyFinderTests
         {
             var deleteSpyName = "George Smiley";
             var context = Substitute.For<ISpyDBContext>();
-            var dummy = 0;
-            context.When(x => x.DeleteSpy(deleteSpyName)).Do(x => dummy++); // TODO: hack =- fix
+            var dummy = 0; // TODO: hack =- fix
+            context.When(x => x.DeleteSpy(deleteSpyName)).Do(x => dummy++); 
             var c = new SpyFinder.Controllers.SpiesController(context);
             var result = c.Delete(deleteSpyName).Value;
-            Assert.Equal("Spy successfully deleted", result); //TODO remove hardcoded strings...
-        }
-
-        [Fact]
-        public void TryDeleteSpy()
-        {
+            Assert.Equal("Spy successfully deleted", result); 
         }
 
         [Fact]
@@ -105,11 +91,6 @@ namespace SpyFinderTests
             var c = new SpyFinder.Controllers.SpiesController(context);
             var result = c.Post(query).Value;
             Assert.Equal(answer, result);
-        }
-
-        [Fact]
-        public void TryCheckMessageForSpy()
-        {
         }
     }
 }
